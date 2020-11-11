@@ -1,6 +1,6 @@
 ---
 title: "HyperLoop: Group-Based NIC-Offloading to Accelerate Replicated Transactions in Multi-Tenant Storage Systems"
-tags: `Paper Note` `SIGCOMM` `2018` `RDMA`
+tags: Paper SIGCOMM 2018 RDMA
 show_edit_on_github: false
 ---
 
