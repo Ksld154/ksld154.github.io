@@ -63,7 +63,6 @@ show_edit_on_github: false
     * 不涉及Replica的CPU
 * RDMA NIC:
     * 接收上個NIC來的封包後，執行對應的memory ops, 再forward封包到下一個replica
-
 ## 4 HyperLoop Design
 ### 4-1 Key Ideas
 1. 傳統的RDMA**為什麼需要CPU Polling**
