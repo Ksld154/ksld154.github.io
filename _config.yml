@@ -84,7 +84,7 @@ toc:
 ## => Markdown Enhancements
 ##############################
 ## Mathjax
-mathjax: # false (default), true
+mathjax:  true
 mathjax_autoNumber: # false (default), true
 
 ## Mermaid
@@ -127,12 +127,12 @@ comments:
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : # GitHub Application Client ID
-    clientSecret: # GitHub Application Client Secret
-    repository  : # GitHub repo
-    owner       : # GitHub repo owner
+    clientID    : 3eab67722a0ab20371d9
+    clientSecret: 90334cab3a05dee9847e1e873752b58ce059550a
+    repository  : ksld154.github.io
+    owner       : Ksld154
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
-      # - your GitHub Id
+      Ksld154
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.

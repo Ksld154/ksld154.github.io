@@ -24,6 +24,7 @@ show_edit_on_github: false
         * 可避免CPU polling
     * 可以主動update其他NIC的work queue entry的內容
         * 要修改NIC driver
+
 ## 2 Background & Issues 
 * **簡介 Replicated Transaction**
     * 單一transaction update流程(atomic):
@@ -50,12 +51,15 @@ show_edit_on_github: false
         * 關鍵的storage **replication, transaction還是卡在CPU**
         * 避免context switch而用的core-pinning, 更不適合用在multi-tenant
             * 因 replica數(partition數) >>> core數
+
 ## 3 HyperLoop Overview
+
 ### 3-1 Design Goals
 1. No replica CPU involvement **on the critical path**
 2. Provide **ACID** operation
 3. End-host only implementation based on commodity hardware
     * 只要動client跟replica的硬體，不用動到switch 
+
 ### 3-2 HyperLoop Architecture
 ![](https://i.imgur.com/EjIIYM0.png)
 * Net primitive lib: 實作四個group network primitives(by RDMA)
@@ -63,7 +67,9 @@ show_edit_on_github: false
     * 不涉及Replica的CPU
 * RDMA NIC:
     * 接收上個NIC來的封包後，執行對應的memory ops, 再forward封包到下一個replica
+
 ## 4 HyperLoop Design
+
 ### 4-1 Key Ideas
 1. 傳統的RDMA**為什麼需要CPU Polling**
     * Client -> Replica#1: 用RDMA直接送，不用經CPU
@@ -90,6 +96,7 @@ show_edit_on_github: false
     * 修改完後，wait會activate這些WR，並forward出去
     * 會占用多餘的WR送metadata跟WAIT，但影響不大    
 4. Integration with other RDMA operations to support ACID
+
 ### 4-2 Detailed Primitives Design
 * 利用以上概念，寫出四隻API提供Replicated Transactions所需操作
 1. **Group write (gWRITE)**
@@ -106,6 +113,7 @@ show_edit_on_github: false
 4. **Group RDMA flush (gFLUSH)**
     *  Supports the **durability** at the “**NIC-level**”
     *  把NIC cache裡的data, flush到NVM(SSD)
+
 ## 5 Case Study
 Skip
 
