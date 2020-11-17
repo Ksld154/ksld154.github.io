@@ -118,7 +118,7 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: "gitalk" # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
@@ -132,7 +132,7 @@ comments:
     repository  : ksld154.github.io
     owner       : Ksld154
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
-      Ksld154
+      - Ksld154
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
