@@ -19,7 +19,6 @@ show_edit_on_github: false
 
 ### 2 SSH and git Environment Setup (optional, 已設定過的可跳過)
 * 先裝git
-
 ```bash
 sudo apt install git
 ```
@@ -28,9 +27,7 @@ sudo apt install git
 ```bash
 mkdir .ssh
 ssh-keygen # generate ssh key pair, 一路按enter
-
-# key pair is generated at ~/.ssh
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa # key pair is generated at ~/.ssh
 ```
 
 * [上傳ssh金鑰到你的GitHub帳戶](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
@@ -91,6 +88,7 @@ rping -c -v -a <SERVER_IP>
 ### ib_rc_pingpong
 ```bash
 sudo apt install ibverbs-utils
+
 ## server side
 ibv_rc_pingpong -d <RDMA_NIC_NAME> -g <GID>
 
