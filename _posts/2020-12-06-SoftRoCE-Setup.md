@@ -32,8 +32,8 @@ ssh-add ~/.ssh/id_rsa # key pair is generated at ~/.ssh
 
 * [上傳ssh金鑰到你的GitHub帳戶](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 ```bash
-cat ~/.ssh/ubuntu_id_rsa.pub 
 # copy the output and paste it to your GitHub ssh key settings
+cat ~/.ssh/ubuntu_id_rsa.pub 
 ```
 
 * git環境設定
@@ -44,25 +44,25 @@ git config --global user.email "YOUR EMAIL"
 
 ### 3 Install User Library
 * 先裝這些庫
-
 ```bash
 sudo apt install libibverbs-dev librdmacm-dev
 ```
 
-* 安裝 [rdma-core](https://github.com/linux-rdma/rdma-core) ([librxe](https://github.com/SoftRoCE/librxe-dev)過時了，不建議使用)
-
+* 安裝 [rdma-core](https://github.com/linux-rdma/rdma-core) ([librxe](https://github.com/SoftRoCE/librxe-dev) 過時了，不建議使用)
 ```bash
+# Download the libary and install prerequisites
 git clone https://github.com/linux-rdma/rdma-core.git
 sudo apt install build-essential cmake gcc libudev-dev libnl-3-dev libnl-route-3-dev 
 sudo apt install ninja-build pkg-config valgrind python3-dev cython3 python3-docutils pandoc
-
+```
+```bash
+# Complie the library
 cd rdma-core
 bash build.sh
 ```
 
 ### 4 Add Virtual RDMA NIC
 * 每次reboot後都要重新加一次
-
 ```bash
 rdma link add <RDMA_NIC_NAME> type <TYPE> netdev <DEVICE>
 ```
